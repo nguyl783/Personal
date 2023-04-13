@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <title>Lauren's 21st Birthday Mapping</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!--    Include the reference to the Mapbox JavaScript here in the <head> of the page    -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    
+
+          
+    <!--    Include the reference to the Mapbox CSS here in the <head> of the page    -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+        /* Insert the CSS code here between the <style> tags */
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+        #title { z-index: 9999; 
+            background-color:ghostwhite; 
+            opacity: 60%; 
+            text-align: center 
+        }
+    </style>
+  </head>
+
+  <body>
+    <!--  Insert the map div here in the <body> of the page  -->
+    <div id='map'></div>
+    
+    <!--  Insert the tile div here (part V) -->
+    <div id='title'>
+                <h1>Lauren's 21st Birthday Shenanigans</h1>
+ 	  </div>
+
+    <script>
+        // Insert the JavaScript within the <script> tags, within the body   
+        // Start with the Mapbox access token here
+        mapboxgl.accessToken = 'pk.eyJ1IjoibG5ndXllbjMiLCJhIjoiY2xnNWRqeGJqMDJmczNkbjk4NzhtbnN6aSJ9.O2lK1u2jRAWZ8pqFqvah-A'; //  Put your access token between the single quotes.
+   
+        // Then initialize the map here
+        var map = new mapboxgl.Map({
+            container: 'map', // id of a div on your page, where the map will be inserted
+            style: 'mapbox://styles/mapbox/streets-v12', // stylesheet location; changed basemap to outdoors
+            center: [-115.1728, 36.1230], // starting position [lng, lat] eg. [-122.6788, 45.5212]
+            zoom: 13 // starting zoom 
+        });
+        var popup = new mapboxgl.Popup({ offset: 25 })
+            .setHTML('Hello World. Welcome to Portland!');
+
+        // Add popup markers here  (part IV)
+        var popup_layer_venetian = new mapboxgl.Popup({closeOnClick: false, anchor: 'top-left'}) 
+            .setLngLat([-115.16952, 36.1212]) //popup coordinates
+            .setHTML('<h3>HOME BASE - Venetian:<br>Grand Canal Shoppes<br>Art and Architecture</h3>') //popup text
+            .addTo(map); //add this popup to the map!
+        var popup_layer_park = new mapboxgl.Popup({closeOnClick: false, anchor: 'top-right'})
+            .setLngLat([-115.17675, 36.10460]) // popup coords
+            .setHTML('<h3>Park MGM:<br>Eataly<br>Best Friend<br>Haus of Gaga</h3>') // hyperlinked to text
+            .addTo(map); // add to map
+        var popup_layer_resorts = new mapboxgl.Popup({closeOnClick: false, anchor: 'bottom-right'})
+            .setLngLat([-115.16765, 36.13434]) // popup coords
+            .setHTML('<h3>Resorts World:<br>Famous Foods Street Eats</h3>') // hyperlinked to text
+            .addTo(map); // add to map
+        var popup_layer_circus = new mapboxgl.Popup({closeOnClick: false, anchor: 'bottom-left'})
+            .setLngLat([-115.16280, 36.13686]) // popup coords
+            .setHTML('<h3>Circus Circus:<br>Adventuredome<br>The Midway<br>Circus Acts</h3>') // hyperlinked to text
+            .addTo(map); // add to map
+        var popup_layer_wynn = new mapboxgl.Popup({closeOnClick: false, anchor: 'bottom-left'})
+            .setLngLat([-115.16189, 36.12632]) // popup coords
+            .setHTML('<h3>Wynn:<br>Garden<br>Lake of Dreams Show</h3>') // hyperlinked to text
+            .addTo(map); // add to map
+        var popup_layer_caesar = new mapboxgl.Popup({closeOnClick: false, anchor: 'bottom-right'})
+            .setLngLat([-115.17456, 36.11637]) // popup coords
+            .setHTML("<h3>Caesar's Palace:<br>Bacchanal Buffet<br>Vanderpump A Paris<br>Shopping</h3>") // hyperlinked to text
+            .addTo(map); // add to map
+        var popup_layer_treasure = new mapboxgl.Popup({closeOnClick: false, anchor: 'bottom-right'})
+            .setLngLat([-115.17202, 36.12488]) // popup coords
+            .setHTML("<h3>Treasure Island:<br>Senor Frog<br>Marvel Museum</h3>") // hyperlinked to text
+            .addTo(map); // add to map
+        var popup_layer_bellagio = new mapboxgl.Popup({closeOnClick: false, anchor: 'top-right'})
+            .setLngLat([-115.17646, 36.11362]) // popup coords
+            .setHTML("<h3>Bellagio:<br>Conservatory and Botannical Gardens<br>Fountains<br>Yellowtail</h3>") // hyperlinked to text
+            .addTo(map); // add to map
+        var popup_layer_flamingo = new mapboxgl.Popup({closeOnClick: false, anchor: 'top-right'})
+            .setLngLat([-115.17079, 36.11657]) // popup coords
+            .setHTML("<h3>Flamingo:<br>Wildlife Habitat</h3>") // hyperlinked to text
+            .addTo(map); // add to map
+        
+    
+        
+        // Add any other variables such as markers here (part III)
+        var marker_venetian = new mapboxgl.Marker({color:'#A42A04'})
+            .setLngLat([-115.16952, 36.1212]) // starting position [lng, lat] 
+            .addTo(map);
+        var marker_park = new mapboxgl.Marker({color:'#D29F53'})
+            .setLngLat([-115.17675, 36.10460]) // starting position; keller auditorium
+            .addTo(map);
+        var marker_resorts = new mapboxgl.Marker({color: '#ff0000'})
+            .setLngLat([-115.16765, 36.13434]) // starting pos at farmhouse thai
+            .addTo(map);
+        var marker_circus = new mapboxgl.Marker({color: '#ffb400'})
+            .setLngLat([-115.16280, 36.13686]) // starting pos at salt and straw
+            .addTo(map);
+        var marker_wynn = new mapboxgl.Marker({color: '#F5F5DC'})
+            .setLngLat([-115.16189, 36.12632]) // starting pos at OMSI
+            .addTo(map);
+        var marker_caesar = new mapboxgl.Marker({color: '#734D0F'})
+            .setLngLat([-115.17456, 36.11637]) // starting pos at forest park
+            .addTo(map);
+        var marker_treasure = new mapboxgl.Marker({color: '#0D0000'})
+            .setLngLat([-115.17202, 36.12488]) // starting pos at forest park
+            .addTo(map);
+        var marker_bellagio = new mapboxgl.Marker({color: '#b7dff3'})
+            .setLngLat([-115.17646, 36.11362]) // starting pos at forest park
+            .addTo(map);
+        var marker_bellagio = new mapboxgl.Marker({color: '#b7dff3'})
+            .setLngLat([-115.17079, 36.11657]) // starting pos at forest park
+            .addTo(map);
+        
+        // Add optional advanced "On load" function here
+        
+    </script>
+
+  </body>
+
+</html>
